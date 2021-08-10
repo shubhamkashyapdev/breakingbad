@@ -14,7 +14,7 @@ const CharactersState = (props) => {
   const [state, dispatch] = useReducer(CharactersReducer, initialState);
 
   // fetch characters //
-  const getCharacter = async (characterLimit, offset) => {
+  const getCharacters = async (characterLimit = 10, offset = 0) => {
     try {
       const res = await axios.get(
         `https://www.breakingbadapi.com/api/characters?limit=${characterLimit}&offset=${offset}`
@@ -30,7 +30,7 @@ const CharactersState = (props) => {
     <CharactersContext.Provider
       value={{
         characters: state,
-        setAlert,
+        getCharacters,
       }}
     >
       {props.children}

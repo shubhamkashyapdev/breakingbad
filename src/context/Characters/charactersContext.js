@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const CharacterContext = createContext();
+const CharactersContext = createContext();
 
-export default AlertContext;
+export default CharactersContext;
