@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 // css //
 import styles from './CharacterCard.scss';
 
+const cardTransition = {
+  initial: {},
+  animated: {},
+};
+
 const CharacterCard = ({ character }) => {
+  const [selectedId, setSelectedId] = useState(null);
+
   const history = useHistory();
   const id = character.char_id;
   const singleCharacter = () => {
     history.push(`/character/${id}`);
   };
   return (
-    <div className='card' onClick={singleCharacter}>
-      <div className='card__image-container'>
-        <img src={character.img} alt='' />
+    <motion.div className='card' onClick={singleCharacter}>
+      <div
+        className='card__bg'
+        style={{ backgroundImage: `url(${character.img})` }}
+      >
+        <div className='card__container'>
+          <div className='card__name'>Name: &nbsp; {character.name}</div>
+          <div className='card__category'>
+            {' '}
+            Category: &nbsp;{character.category}
+          </div>
+        </div>
       </div>
-      <div className='name'>Name: {character.name}</div>
-      <div className='category'>{character.category}</div>
-    </div>
+    </motion.div>
   );
 };
 

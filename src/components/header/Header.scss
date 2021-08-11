@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #212121;
+  &__container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__list {
+    display: flex;
+    gap: 30px;
+  }
+  &__item {
+    padding: 5px 10px;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+    a {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+  &__logo {
+    color: #fff;
+    font-size: 32px;
+    &::after {
+      content: '.';
+      font-size: 1.1em;
+      color: red;
+    }
+  }
+}

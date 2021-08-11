@@ -1,0 +1,13 @@
+.filter {
+  padding: 10px 0;
+  width: 100%;
+  background-color: rgb(219, 219, 219);
+  margin-bottom: 30px;
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
