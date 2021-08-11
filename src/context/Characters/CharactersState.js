@@ -9,6 +9,8 @@ const CharactersState = (props) => {
   const initialState = {
     characters: [],
     character: {},
+    offset: 0,
+    count: 10,
     loading: true,
   };
 
@@ -35,6 +37,7 @@ const CharactersState = (props) => {
       value={{
         characters: state,
         getCharacters,
+        setFilter,
       }}
     >
       {props.children}

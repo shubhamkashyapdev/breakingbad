@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   FormControl,
   InputLabel,
@@ -7,6 +7,7 @@ import {
   Button,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import CharactersContext from '../../context/Characters/charactersContext';
 
 // css //
 import './Filter.scss';
@@ -23,14 +24,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Filter = () => {
+  const characterContext = useContext(CharactersContext);
+  const { setFilter } = characterContext;
   const classes = useStyles();
   const [count, setCount] = useState(10);
   const [offset, setOffset] = useState(1);
   const [openCount, setOpenCount] = React.useState(false);
   const [openOffset, setOpenOffset] = React.useState(false);
 
+  const handleFilterData = () => {
+    setFilter(count, offset);
+  };
+
   const handleChangeCount = (event) => {
     setCount(event.target.value);
+    handleFilterData();
   };
 
   const handleCloseCount = () => {
@@ -42,6 +50,7 @@ const Filter = () => {
   };
   const handleChangeOffset = (event) => {
     setOffset(event.target.value);
+    handleFilterData();
   };
 
   const handleCloseOffset = () => {
@@ -65,12 +74,10 @@ const Filter = () => {
             value={count}
             onChange={handleChangeCount}
           >
-            <MenuItem value=''>
-              <em>None</em>
-            </MenuItem>
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={40}>Forty</MenuItem>
           </Select>
         </FormControl>
         <FormControl className={classes.formControl}>
@@ -90,6 +97,7 @@ const Filter = () => {
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={40}>Forty</MenuItem>
           </Select>
         </FormControl>
       </div>

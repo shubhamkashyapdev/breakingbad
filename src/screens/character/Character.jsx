@@ -20,15 +20,19 @@ const Character = () => {
   console.log(singleCharacter);
 
   useEffect(() => {
-    getCharacters();
-    if (characters) {
+    if (characters.characters.length === 0) {
       getCharacters();
-      setSingleCharacter(
-        characters.characters.filter((char) => {
-          return char.char_id == parseInt(charId);
-        })[0]
-      );
+    } else {
+      if (characters) {
+        getCharacters();
+        setSingleCharacter(
+          characters.characters.filter((char) => {
+            return char.char_id == parseInt(charId);
+          })[0]
+        );
+      }
     }
+
     // eslint-disable-next-line
   }, [charId]);
 
@@ -44,9 +48,13 @@ const Character = () => {
               <div className='profile__info__container'>
                 <div className='profile__info__top-container'>
                   <div className='profile__info__stars'>
-                    {singleCharacter.appearance.map((item, index) => (
-                      <i key={`${index}`} className='fas fa-star'></i>
-                    ))}
+                    {singleCharacter.apperance && singleCharacter.length > 0 ? (
+                      singleCharacter.appearance.map((item, index) => (
+                        <i key={`${index}`} className='fas fa-star'></i>
+                      ))
+                    ) : (
+                      <h4>Apperance</h4>
+                    )}
                   </div>
                   <h3 className='profile__info__title'>
                     {singleCharacter.name}
@@ -58,14 +66,21 @@ const Character = () => {
                 <div className='profile__info__bottom-container'>
                   <div className='profile__info__occupation'>
                     <h3>Occupation</h3>
-                    {singleCharacter.occupation.map((item, index) => (
+                    {singleCharacter.occupation?.map((item, index) => (
                       <span key={index}>{item}</span>
                     ))}
                   </div>
+                  <hr />
                   <h3 className='profile__info__status'>Status</h3>
                   <h5 className='profile__info__status-text'>
                     {singleCharacter.status}
                   </h5>
+                  <hr />
+                  <h3 className='profile__info__nickname'>Nickname</h3>
+                  <h5 className='profile__info__nickname-text'>
+                    {singleCharacter.nickname}
+                  </h5>
+                  <hr />
                 </div>
               </div>
             </div>

@@ -11,11 +11,12 @@ const CharacterList = () => {
   const charactersContext = useContext(CharacterContext);
   const { characters, loading, getCharacters } = charactersContext;
   const charactersList = characters.characters;
+  const { count, offset } = characters;
   // effects //
   useEffect(() => {
-    getCharacters();
+    getCharacters(characters.count, characters.offset);
     // eslint-disable-next-line
-  }, []);
+  }, [offset, count]);
 
   return (
     <div className='characters'>
