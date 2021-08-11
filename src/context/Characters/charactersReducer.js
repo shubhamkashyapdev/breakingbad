@@ -9,6 +9,8 @@ const characterReducer = (state, action) => {
         characters: payload,
         loading: false,
       };
+    default:
+      return state;
   }
 };
 

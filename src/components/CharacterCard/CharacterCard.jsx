@@ -6,14 +6,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 // css //
 import styles from './CharacterCard.scss';
 
-const cardTransition = {
-  initial: {},
-  animated: {},
-};
-
 const CharacterCard = ({ character }) => {
-  const [selectedId, setSelectedId] = useState(null);
-
   const history = useHistory();
   const id = character.char_id;
   const singleCharacter = () => {

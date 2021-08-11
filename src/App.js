@@ -9,15 +9,19 @@ import CharactersState from './context/Characters/CharactersState';
 
 // screens //
 import CharacterList from './screens/characters/Characters';
+import Character from './screens/character/Character';
 
 function App() {
   return (
     <CharactersState>
       <Router>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={CharacterList} />
-        </Switch>
+        <div className='main__container'>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={CharacterList} />
+            <Route exact path='/character/:id' component={Character} />
+          </Switch>
+        </div>
       </Router>
     </CharactersState>
   );

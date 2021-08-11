@@ -3,11 +3,12 @@ import CharactersContext from './charactersContext';
 import CharactersReducer from './charactersReducer';
 import axios from 'axios';
 
-import { GET_CHARACTER, GET_CHARACTERS } from '../Types';
+import { GET_CHARACTER, GET_CHARACTERS, SET_FILTERS } from '../Types';
 
 const CharactersState = (props) => {
   const initialState = {
     characters: [],
+    character: {},
     loading: true,
   };
 
@@ -24,7 +25,10 @@ const CharactersState = (props) => {
       dispatch({ type: GET_CHARACTERS, payload: err.response.msg });
     }
   };
-  // Remove Alert //
+  // SET FILTERS //
+  const setFilter = (count, offset) => {
+    dispatch({ type: SET_FILTERS, payload: { count, offset } });
+  };
 
   return (
     <CharactersContext.Provider
