@@ -15,10 +15,10 @@ const Header = () => {
           <div className='header__logo'>Logo</div>
           <ul className='header__list'>
             <li className='header__item'>
-              <Link to='/'>Home</Link>
+              <Link to='/badcharacter'>Home</Link>
             </li>
             <li className='header__item'>
-              <Link to='/'>About</Link>
+              <Link to='/badcharacter'>About</Link>
             </li>
           </ul>
         </div>
